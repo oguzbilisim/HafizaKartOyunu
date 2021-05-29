@@ -1,0 +1,154 @@
+@charset "utf-8";
+
+body {
+  background: #000000;
+  color: white;
+  font-family: arial;
+}
+body header {
+  height: 10vh;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+@media screen and (min-width: 37.4375em) {
+  body header {
+    width: 600px;
+  }
+}
+
+.timer {
+	
+	font-size: 50px;
+}
+
+.game {
+  height: 90vh;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+@media screen and (min-width: 37.4375em) {
+  .game {
+    width: 600px;
+  }
+}
+
+.flip-container {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  perspective: 1000;
+  height: 22%;
+  margin: 1%;
+  cursor: pointer;
+}
+
+.flip-container.flip .flipper {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 18%;
+  float: left;
+  border-radius: 12px;
+}
+
+.flipper {
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  height: 100%;
+  position: relative;
+}
+.flipper .front, .flipper .back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -ms-backface-visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-shadow: #FF4040 0 8px 2px;
+}
+.flipper .front {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  background:#FF0004;
+}
+.flipper .back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  border: 1px solid #FF0004;
+}
+
+
+
+
+#asker {
+  background: white url("resimler/asker.png") no-repeat center;
+  background-size: contain;
+}
+
+#bahcivan {
+  background: white url("resimler/bahcivan.png") no-repeat center;
+  background-size: contain;
+}
+
+#doktor {
+  background: white url("resimler/doktor.png") no-repeat center;
+  background-size: contain;
+}
+
+#firinci {
+  background: white url("resimler/firinci.png") no-repeat center;
+  background-size: contain;
+}
+
+#guvenlik {
+  background: white url("resimler/guvenlik.png") no-repeat center;
+  background-size: contain;
+}
+
+#hakem {
+  background: white url("resimler/hakem.png") no-repeat center;
+  background-size: contain;
+}
+
+#hemsire {
+  background: white url("resimler/hemsire.png") no-repeat center;
+  background-size: contain;
+}
+
+#muhendis {
+  background: white url("resimler/muhendis.png") no-repeat center;
+  background-size: contain;
+}
+
+#sofor {
+  background: white url("resimler/sofor.jpg") no-repeat center;
+  background-size: contain;
+}
+
+#tesisatci {
+  background: white url("resimler/tesisatci.png") no-repeat center;
+  background-size: contain;
+}
+
+
+

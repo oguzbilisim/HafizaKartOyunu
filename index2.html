@@ -1,0 +1,383 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3X6 KART EŞLEŞTİRME</title>
+	<link rel="stylesheet" href="index2.css">
+	
+	<div class="timer">50</div>
+	
+	<h1 id="counterValue">0</h1>
+	<img id="tikImage" src="resimler/carpi.png">
+	<img id="carpiImage" src="resimler/tik.png">
+</head>
+
+	
+	<div class="game">
+				<img id="uzgunum" src="resimler/uzgunum.png">
+		<img id="tebrikler" src="resimler/tebrikler.png">
+   <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+		 <div class="box">
+      <div class="flipper">
+         <div class="front"></div>
+         <div class="back"></div>
+      </div>
+   </div>
+</div>
+
+	
+	
+	<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js'></script>
+	
+<script>
+  window.console = window.console || function(t) {};
+	$(document).ready(function() {
+    
+    var cards = ['cilek', 'greyfurt', 'havuc', 'karpuz', 'kayisi', 'kiraz', 'limon', 'muz', 'pizza'];
+		
+		document.getElementById("tikImage").style.display="none";
+		document.getElementById("carpiImage").style.display="none";
+				document.getElementById("tebrikler").style.display="none";
+        document.getElementById("uzgunum").style.display="none";
+		
+		
+		
+	let counterValue = document.querySelector("#counterValue");
+		
+	let counter = 0;
+		
+		
+		function winAudio() {
+			
+			document.getElementById("winMusic").play();
+		}
+		
+		function failAudio() {
+			
+			document.getElementById("failMusic").play();
+		}
+		
+		function alkisAudio() {
+			
+			document.getElementById("alkisMusic").play();
+		}
+		
+		function aaaAudio() {
+			
+			document.getElementById("aaaMusic").play();
+		}
+		
+		
+		
+		
+		
+    var pairs = cards.concat(cards);//kart çiftleri oluştur
+    var chosenCards = [];
+    var cardsToFlip = [];
+    
+    var gameStarted = false;
+    var running = false;
+    var outOfTime = false;
+    var countdownStarted = false;
+    var win = false;
+    var pairCount = 0;
+    var time = 30;
+    
+    shuffleArray(pairs);//kartları karıştır
+    
+    $('.back').each(function(i, element) {
+        $(this).attr('id', pairs[i]);//kartlar için DOM'da kimliği ayarlar, stillere css yoluyla erişir
+    });
+    
+    $('.box').click(function(){
+        
+        if (!outOfTime) {
+        
+            if (!gameStarted && !running){//oyun başlamadan önce tüm kartları kullanıcıya gösterin ve geri çevirin
+                
+                running = true;
+                
+                $('.box').each(function() {
+                    $(this).toggleClass('flip');
+                });
+                
+                setTimeout(function() {
+                    
+                    $('.box').each(function() {
+                        $(this).toggleClass('flip');
+                    });
+                    
+                    gameStarted = true;
+                    running = false;
+                    
+                }, 5000);
+            }
+    
+            else if ($(this).find('.back').attr('id') == chosenCards[0] && chosenCards[1] == null && $(this).hasClass('flip') && !running) {
+                
+                running = true;
+                
+                chosenCards[0] = null;//bir kart seçilmiş ve sonra tekrar tıklanmışsa, ters çevirin
+                $(this).toggleClass('flip');
+                
+                running = false;
+                
+            }
+            
+            else if ($(this).hasClass('flip')) {
+                        
+                return;//tıklanan kart zaten çevrilmişse, geri dön
+                
+            }
+        
+            else if (chosenCards[0] == null && chosenCards[1] == null && !$(this).hasClass('flip') && !running) {
+                
+                if (!countdownStarted) {
+                    countdown();
+                }
+                
+                running = true;
+                
+                chosenCards[0] = $(this).find('.back').attr('id');//hiç kart seçilmediyse, seçilen kartları seçilen chosenCards[0]
+                $(this).toggleClass('flip');
+                
+                running = false;
+                
+            }
+        
+            
+            else if (chosenCards[0] != null && chosenCards[1] == null && !$(this).hasClass('flip') && !running) {
+                
+                running = true;
+                
+                chosenCards[1] = $(this).find('.back').attr('id');//ikinci kart çevrilmemişse, seçilen kartın markasını chosenCards[1] saklayın ve çevirin
+                $(this).toggleClass('flip');
+        
+                if (chosenCards[0] == chosenCards[1]) {
+                    
+                    chosenCards[0] = null;
+                    chosenCards[1] = null;
+                    
+                    pairCount++;
+					
+					
+					
+					counter++;
+					counterValue.innerText = counter;
+					
+					winAudio();
+					
+					document.getElementById("carpiImage").style.display="inline";
+					document.getElementById("tikImage").style.display="none";
+                    
+                    if (pairCount == cards.length) {
+                        win = true;
+                        
+						
+						alkisAudio();
+						document.getElementById("tebrikler").style.display="inline";
+                    }
+                    
+                    running = false;
+                    
+                }
+        
+                else {//markalar eşleşmezse - seçilen Kartları boşaltın ve kartları ters çevirin 
+                    
+					document.getElementById("carpiImage").style.display="none";
+					document.getElementById("tikImage").style.display="inline";
+                    cardsToFlip[0] = chosenCards[0];
+                    cardsToFlip[1] = chosenCards[1];
+                    
+                    chosenCards[0] = null;
+                    chosenCards[1] = null;
+                    failAudio();
+                    setTimeout(function(){//eşleşmeyen seçilen kartları geri çevirin
+        
+                        $('*[id*=' + cardsToFlip[0] + ']').each(function() {
+                            $(this).closest('.flip').toggleClass('flip');
+                        });
+                        $('*[id*=' + cardsToFlip[1] + ']').each(function() {
+                            $(this).closest('.flip').toggleClass('flip');
+                        });
+                        
+                        running = false;
+                        
+                    }, 800);
+                }
+                
+            }
+                
+        } else {
+			
+           // alert("you have run out of time :(");
+			
+        };
+        
+    });//Konteyneri Çevir Sona Tıklayın
+    
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
+    
+    function countdown () {
+        
+        countdownStarted = true;
+    
+        var timeStart = +new Date;
+        var timer = setInterval( function() {
+            
+            var timeNow = +new Date;
+            var difference = ( timeNow - timeStart ) / 1000; // odakta oyun yoksa zaman farkını hesaplar
+            
+            if (time > 0 && !win) {// Hala zaman kaldıysa ve oyun kazanılmadıysa, zamanı düşürün
+                
+                time = 50;
+                time = Math.floor( time - difference );
+                $('.timer').text( time );
+                
+            } else if (win) {// oyun kazanıldığında zamanlayıcıyı durdur
+                
+                clearInterval(timer);
+                
+            } else {//zaman dolduğunda zamanlayıcıyı durdur
+                
+                outOfTime = true;
+				
+                
+                aaaAudio();
+				document.getElementById("uzgunum").style.display="inline";
+                clearInterval(timer);
+                
+            } 
+            
+        }, 250 );
+        
+    };
+
+});
+	
+</script>
+	
+	
+	
+	
+<body>
+	
+	<audio src="muzikler/win.mp3" id="winMusic"></audio>
+	<audio src="muzikler/fail.mp3" id="failMusic"></audio>
+	<audio src="muzikler/alkis.wav" id="alkisMusic"></audio>
+	<audio src="muzikler/aaa.wav" id="aaaMusic"></audio>
+	
+	
+	
+</body>
+</html>

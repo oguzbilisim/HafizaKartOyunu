@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+body {
+  background: #123456;
+  color: white;
+  font-family: arial;
+}
+body header {
+  height: 10vh;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+@media screen and (min-width: 37.4375em) {
+  body header {
+    width: 600px;
+  }
+}
+
+.timer {
+	
+	font-size: 50px;
+}
+
+.game {
+  height: 90vh;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+@media screen and (min-width: 37.4375em) {
+  .game {
+    width: 600px;
+  }
+}
+
+.box {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  perspective: 1000;
+  height: 22%;
+  margin: 1%;
+  cursor: pointer;
+}
+
+.box.flip .flipper {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.box, .front, .back {
+  width: 25%;
+  float: left;
+  border-radius: 100px;
+}
+
+.flipper {
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  height: 100%;
+  position: relative;
+}
+.flipper .front, .flipper .back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -ms-backface-visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-shadow: #292929 0 8px 2px;
+}
+.flipper .front {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  background:#08E8DE;
+}
+.flipper .back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  border: 1px solid #FFFF00;
+}
+
+
+
+
+#cilek {
+  background: white url("resimler/cilek.png") no-repeat center;
+  background-size: contain;
+}
+
+#greyfurt {
+  background: white url("resimler/greyfurt.png") no-repeat center;
+  background-size: contain;
+}
+
+#havuc {
+  background: white url("resimler/havuc.png") no-repeat center;
+  background-size: contain;
+}
+
+#karpuz {
+  background: white url("resimler/karpuz.png") no-repeat center;
+  background-size: contain;
+}
+
+#kayisi {
+  background: white url("resimler/kayisi.png") no-repeat center;
+  background-size: contain;
+}
+
+#kiraz {
+  background: white url("resimler/kiraz.png") no-repeat center;
+  background-size: contain;
+}
+
+#limon {
+  background: white url("resimler/limon.png") no-repeat center;
+  background-size: contain;
+}
+
+#muz {
+  background: white url("resimler/muz.png") no-repeat center;
+  background-size: contain;
+}
+
+#pizza {
+  background: white url("resimler/pizza.png") no-repeat center;
+  background-size: contain;
+}
+
+
+
+
